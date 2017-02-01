@@ -7,7 +7,8 @@ new Vue({
         specialCount: 5,
         gameIsRunning: false, 
         log: [], 
-        winText: ''
+        winText: '', 
+        gaveUp: false
     },
     methods: {
         startGame: function () {
@@ -66,8 +67,8 @@ new Vue({
                 this.winText = this.announceWinner(this.playerHealth, this.monsterHealth); 
         },
         giveUp: function() {
-            alert("You run away with your tail between your legs!");
-            this.resetGame();
+            this.winText = "You run away with you tale between your legs.";
+            this.gaveUp = true;
         },
         dealDamage: function (min, max) {
             return Math.max(Math.floor((Math.random() * max) + 1), min);
@@ -91,6 +92,7 @@ new Vue({
             this.log = [];
             this.gameIsRunning = false;
             this.winText = '';
+            this.gaveUp = false;
         },
         announceWinner: function(playerHealth, monsterHealth) {
               
