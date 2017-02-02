@@ -1,6 +1,7 @@
 new Vue({
     el: '#app',
     data: {
+
         playerHealth: 100,
         monsterHealth: 100,
         healCount: 5,
@@ -9,12 +10,16 @@ new Vue({
         log: [], 
         winText: '', 
         gaveUp: false
+        
     },
     methods: {
         startGame: function () {
+
             this.gameIsRunning = true;
+
         },
         attack: function () {
+
             var monsterDamage = this.dealDamage(5, 12);
             var playerDamage = this.dealDamage(3, 10);
 
@@ -25,6 +30,7 @@ new Vue({
 
             if (this.checkWin(this.playerHealth, this.monsterHealth))
                 this.winText = this.announceWinner(this.playerHealth, this.monsterHealth);
+
         },
         specialAttack: function () {
 
@@ -40,7 +46,8 @@ new Vue({
             this.log.unshift({ name: 'You', isPlayer: true, isMonster: false, damage: 10}, { name: 'Monster', isPlayer: false, isMonster: true, damage: monsterDamage});
 
             if (this.checkWin(this.playerHealth, this.monsterHealth))
-                this.winText = this.announceWinner(this.playerHealth, this.monsterHealth); 
+                this.winText = this.announceWinner(this.playerHealth, this.monsterHealth);
+
         },
         heal: function () {
 
@@ -65,26 +72,27 @@ new Vue({
 
             if (this.checkWin(this.playerHealth, this.monsterHealth))
                 this.winText = this.announceWinner(this.playerHealth, this.monsterHealth); 
+
         },
         giveUp: function() {
+
             this.winText = "You run away with you tale between your legs.";
             this.gaveUp = true;
         },
         dealDamage: function (min, max) {
+
             return Math.max(Math.floor((Math.random() * max) + 1), min);
+
         },
         checkWin: function(playerHealth, monsterHealth) {
-            if (playerHealth <= 0) {
+            
+            if (playerHealth <= 0 || monsterHealth <= 0) 
                 return true;
-            }
-
-            if (monsterHealth <= 0) {
-                return true;
-            }
-
+            
             return false;
         },
         resetGame: function() {
+
             this.playerHealth = 100;
             this.monsterHealth = 100;
             this.healCount = 5;
@@ -93,14 +101,12 @@ new Vue({
             this.gameIsRunning = false;
             this.winText = '';
             this.gaveUp = false;
+
         },
         announceWinner: function(playerHealth, monsterHealth) {
-              
-                if (this.monsterHealth > this.playerHealth){
-                    return "You Lost!";
-                } else {
-                    return "You won!";
-                }
+
+              this.monsterHeath > this.playerHealth ? "You Lost!" : "You Won!";
+
         }
     }
 });
