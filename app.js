@@ -104,15 +104,8 @@ new Vue({
 
         },
         announceWinner: function(playerHealth, monsterHealth) {
-
-            if (monsterHealth > playerHealth) {
-                return "You Lost!";
-            } else {
-                return "You Won!";
-            }
-
-            //Turnary not working.  Not sure why.
-            //return monsterHeath > playerHealth ? "You Lost!" : "You Won!";
+            
+            return monsterHealth > playerHealth ? "You Lost!" : "You Won!";
 
         }
     }
