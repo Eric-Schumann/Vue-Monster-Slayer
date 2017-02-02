@@ -10,7 +10,7 @@ new Vue({
         log: [], 
         winText: '', 
         gaveUp: false
-        
+
     },
     methods: {
         startGame: function () {
@@ -105,7 +105,7 @@ new Vue({
         },
         announceWinner: function(playerHealth, monsterHealth) {
 
-              this.monsterHeath > this.playerHealth ? "You Lost!" : "You Won!";
+              return this.monsterHeath > this.playerHealth ? "You Lost!" : "You Won!";
 
         }
     }
